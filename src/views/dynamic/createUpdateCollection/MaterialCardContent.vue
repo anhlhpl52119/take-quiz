@@ -2,7 +2,7 @@
   <div>
     <a-card size="small" class="box-shadow">
       <template #title>
-        <strong>Card Title</strong>
+        <strong>{{ index }}</strong>
       </template>
       <template #extra v-if="!isActiveDelete">
         <DeleteOutlined
@@ -17,14 +17,14 @@
       <div class="card-content">
         <div class="flex-item" style="">
           <a-textarea
-            v-model:value="data.term"
+            v-model:value="data.question"
             :autoSize="sizingInputAera"
             placeholder="Enter Term"
           />
         </div>
         <div class="flex-item">
           <a-textarea
-            v-model:value="data.definition"
+            v-model:value="data.answer"
             :autoSize="sizingInputAera"
             placeholder="Enter Defination"
           />
@@ -35,8 +35,12 @@
 </template>
 <script lang="ts" setup>
 import { DeleteOutlined } from '@ant-design/icons-vue';
-import type { IMyArray } from './index.vue';
-const props = defineProps<{ data: IMyArray; isActiveDelete: boolean }>();
+type ICards = Pick<API.ICard, 'id' | 'question' | 'answer'>;
+const props = defineProps<{
+  data: ICards;
+  isActiveDelete: boolean;
+  index: number;
+}>();
 const { data, isActiveDelete } = toRefs(props);
 
 const sizingInputAera = readonly({ minRows: 2, maxRows: 6 });

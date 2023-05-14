@@ -1,8 +1,8 @@
 {
-  "name": "card-recall-acehood",
-  "version": "0.0.1",
+  "name": "take-quiz",
+  "version": "1.0.0",
   "author": {
-    "name": "TakeIT VN",
+    "name": "Hung Anh",
     "url": "https://takeit.vn/"
   },
   "private": true,

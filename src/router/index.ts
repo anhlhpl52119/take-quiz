@@ -33,22 +33,24 @@ const routes: RouteRecordRaw[] = [
       {
         path: '/create-study-set',
         name: RouteName.CreateStudySet,
-        component: () => import('@/views/dynamic/createStudySet/index.vue'),
+        component: () =>
+          import('@/views/dynamic/createUpdateCollection/index.vue'),
         meta: { title: 'Create Study Set' },
       },
       {
         path: '/collection/:id',
         name: RouteName.CollectionDetails,
         component: () => import('@/views/dynamic/studyCard/index.vue'),
-        props: (route) => ({ collectionId: route.params.id }),
+        props: (route) => ({ collectionId: route.params.id as string }),
 
         meta: { title: 'Study Card' },
       },
       {
         path: '/collection/:id/update',
         name: RouteName.UpdateCollection,
-        component: () => import('@/views/dynamic/createStudySet/index.vue'),
-        props: (route) => ({ collectionId: route.params.id }),
+        component: () =>
+          import('@/views/dynamic/createUpdateCollection/index.vue'),
+        props: (route) => ({ collectionId: route.params.id as string }),
 
         meta: { title: 'Study Card' },
       },

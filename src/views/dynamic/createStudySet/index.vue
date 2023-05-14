@@ -1,29 +1,46 @@
 <template>
   <div>
-    <a-form :model="collectionInfo" name="basic" autocomplete="off" @finish="onFinish">
+    <a-form
+      :model="collectionInfo"
+      name="basic"
+      autocomplete="off"
+      @finish="onFinish"
+    >
       <header class="fixed-header-tool flex-50">
         <h2>{{ pageContent.pageTitle }}</h2>
-        <a-button type="primary" size="large" :loading="isLoading" html-type="submit">{{
-          pageContent.submitButton
-        }}</a-button>
+        <a-button
+          type="primary"
+          size="large"
+          :loading="isLoading"
+          html-type="submit"
+          >{{ pageContent.submitButton }}
+        </a-button>
       </header>
       <section class="tool-bar flex-50">
         <div>
-          <a-button @click="visibleState.ImportDrawer = true" size="large" :disabled="true"
-            ><template #icon>
+          <a-button
+            @click="visibleState.ImportDrawer = true"
+            size="large"
+            :disabled="true"
+          >
+            <template #icon>
               <PlusOutlined></PlusOutlined>
             </template>
             Import
           </a-button>
         </div>
-        <div><SettingOutlined style="font-size: 1.5em"></SettingOutlined></div>
+        <div>
+          <SettingOutlined style="font-size: 1.5em"></SettingOutlined>
+        </div>
       </section>
 
       <section class="material-content flex-content">
         <div class="collection-info">
           <a-form-item
             name="name"
-            :rules="[{ required: true, message: 'Collection title is required!' }]"
+            :rules="[
+              { required: true, message: 'Collection title is required!' },
+            ]"
           >
             <a-input
               id="title-collection"
@@ -54,15 +71,21 @@
             ></MaterialCardContent>
           </template>
         </TransitionGroup>
-        <div ref="refsContent" @click="onAddItem" class="new-content-btn box-shadow">
+        <div
+          ref="refsContent"
+          @click="onAddItem"
+          class="new-content-btn box-shadow"
+        >
           <span class="hover-underline-animation">Add Card</span>
         </div>
       </section>
     </a-form>
     <div ref="refsContent" style="margin-top: 10px; height: 20px"></div>
-    <template
-      ><ImportDrawer v-model:is-visible="visibleState.ImportDrawer"></ImportDrawer
-    ></template>
+    <template>
+      <ImportDrawer
+        v-model:is-visible="visibleState.ImportDrawer"
+      ></ImportDrawer>
+    </template>
   </div>
 </template>
 <script lang="ts" setup>
@@ -77,16 +100,26 @@ export interface IMyArray {
   term: string;
   definition: string;
 }
+
 interface PageContentText {
   pageTitle: string;
   submitButton: string;
 }
+
 const route = useRoute();
 const pageContent = computed<PageContentText>(() => {
   if (route.name === RouteName.UpdateCollection) {
-    return { pageTitle: `Update collection`, submitButton: 'Save Change', isUpdate: true };
+    return {
+      pageTitle: `Update collection`,
+      submitButton: 'Save Change',
+      isUpdate: true,
+    };
   } else {
-    return { pageTitle: `Create new collection`, submitButton: 'Create', isUpdate: false };
+    return {
+      pageTitle: `Create new collection`,
+      submitButton: 'Create',
+      isUpdate: false,
+    };
   }
 });
 const props = defineProps<{ collectionId?: string }>();
@@ -128,7 +161,10 @@ const visibleState = reactive({
   ImportDrawer: false,
 });
 const newItems = ref<IMyArray[]>([]);
-const collectionInfo = reactive<API.ICollectionCreateData>({ name: '', description: '' });
+const collectionInfo = reactive<API.ICollectionCreateData>({
+  name: '',
+  description: '',
+});
 const cardsInCollection = ref<IMyArray[]>([]);
 
 const submitionCards = computed<API.ICardCreateParams[]>(() => {
@@ -149,6 +185,7 @@ const submitionNewCards = computed<API.ICardCreateParams[]>(() => {
     return { answer: card.term, question: card.definition };
   });
 });
+
 function onAddItem() {
   const newItem = {
     id: uuidv4(),
@@ -161,12 +198,14 @@ function onAddItem() {
     refsContent.value?.scrollIntoView({ behavior: 'smooth' });
   }, 0.3);
 }
+
 function onDelete(deleteId: string) {
   const removeIndex = cardsInCollection.value.findIndex((obj) => {
     return obj.id === deleteId;
   });
   cardsInCollection.value.splice(removeIndex, 1);
 }
+
 async function onUpdateAllCollection() {
   await onUpdateAllCollectionDatas(
     collectionId?.value!,
@@ -179,6 +218,7 @@ async function onUpdateAllCollection() {
 async function onCreateNewCollection() {
   await createNewCollectionAndCards(collectionInfo, submitionCards.value);
 }
+
 function onFinish() {
   if (route.name === RouteName.CreateStudySet) {
     onCreateNewCollection();
@@ -191,16 +231,19 @@ function onFinish() {
 .fixed-header-tool {
   justify-content: space-between;
 }
+
 .tool-bar {
   margin: 1em 0;
   justify-content: space-between;
   align-items: center;
 }
+
 .material-content {
   margin: 2em 0;
   display: flex;
   flex-direction: column;
   gap: 1em 0;
+
   .new-content-btn {
     height: 4em;
     background-color: #3a6f43d1;
@@ -209,9 +252,11 @@ function onFinish() {
     position: relative;
     transition: 0.3s;
     color: white;
+
     &:active {
       transform: translateY(5px);
     }
+
     span {
       position: absolute;
       top: 50%;
@@ -221,23 +266,27 @@ function onFinish() {
     }
   }
 }
+
 .collection-info {
   width: 50%;
   padding-left: 0.5em;
   display: flex;
   flex-direction: column;
   gap: 1em;
+
   #title-collection,
   #description-collection {
     font-size: 18px;
     padding: 0;
     font-weight: 900;
   }
+
   label {
     font-size: small;
     color: #bfbfbf;
   }
 }
+
 .hover-underline-animation {
   display: inline-block;
   position: relative;
@@ -254,6 +303,7 @@ function onFinish() {
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
   }
+
   &:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;

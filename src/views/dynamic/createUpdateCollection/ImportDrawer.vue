@@ -1,5 +1,11 @@
 <template>
-  <a-drawer placement="top" height="100%" :closable="false" :visible="isVisible" @close="onClose">
+  <a-drawer
+    placement="top"
+    height="100%"
+    :closable="false"
+    :visible="isVisible"
+    @close="onClose"
+  >
     <template #title>
       <h3 @click="onClose" style="cursor: pointer">Import Data</h3>
     </template>
@@ -21,7 +27,6 @@
 <script lang="ts" setup>
 const props = defineProps<{ isVisible: boolean }>();
 const { isVisible } = toRefs(props);
-
 const emit = defineEmits(['update:isVisible']);
 
 const refEvent = ref<HTMLTextAreaElement | null>(null);

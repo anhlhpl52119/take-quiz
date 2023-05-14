@@ -3,22 +3,18 @@
     <section class="colection">
       <h3 class="poiner">Học phần</h3>
       <a-row :gutter="[16, 16]">
-        <a-col
-          v-for="collection in activeCollection"
-          :key="collection.id"
-          :xs="24"
-          :sm="24"
-          :md="12"
-          :lg="8"
-          :xl="8"
-        >
-          <TransitionGroup name="fade" tag="div" class="material-content">
-            <CardStudySetPiC
-              class="box-shadow"
-              :data="collection"
-              @delete="onDeletedCollection"
-            ></CardStudySetPiC> </TransitionGroup
-        ></a-col>
+        <template v-for="collection in activeCollection" :key="collection.id">
+          <a-col :xs="24" :sm="24" :md="12" :lg="8" :xl="8">
+            <TransitionGroup name="fade" tag="div" class="material-content">
+              <CardStudySetPiC
+                :key="collection.id"
+                class="box-shadow"
+                :data="collection"
+                @delete="onDeletedCollection"
+              ></CardStudySetPiC>
+            </TransitionGroup>
+          </a-col>
+        </template>
       </a-row>
     </section>
   </div>

@@ -30,6 +30,7 @@ img {
   height: 100%;
   border: 0; /* for older IE browsers that draw borders around images */
 }
+
 .obj {
   object-fit: fill;
 }
