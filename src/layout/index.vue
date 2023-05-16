@@ -7,7 +7,11 @@
       <router-view v-slot="{ Component }">
         <template v-if="Component">
           <transition
-            :name="Object.is(route.meta?.transitionName, false) ? '' : 'fade-transform'"
+            :name="
+              Object.is(route.meta?.transitionName, false)
+                ? ''
+                : 'fade-transform'
+            "
             mode="out-in"
             appear
           >
