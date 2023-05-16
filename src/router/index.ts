@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 import { RouteName } from '@enum/routesEnum';
 import type { RouteRecordRaw, Router, RouterHistory } from 'vue-router';
 import Layoutt from '@/layout/index.vue';
+import Storage from '@/utils/Storage';
+import { ACCESS_TOKEN_KEY } from '@/enums/cacheEnum';
 
 const routes: RouteRecordRaw[] = [
   {
@@ -28,18 +30,26 @@ const routes: RouteRecordRaw[] = [
         name: RouteName.AboutPage,
         component: () => import('@/views/home/index.vue'),
         meta: { title: 'About' },
+        beforeEnter: () => {
+          console.log('token before', Storage.get(ACCESS_TOKEN_KEY));
+        },
       },
       {
-        path: '/create-study-set',
+        path: '/create-collection',
         name: RouteName.CreateCollection,
         component: () =>
-          import('@/views/dynamic/createUpdateCollection/index.vue'),
+          import(
+            /* webpackChunkName: "collection-gr" */ '@/views/dynamic/createUpdateCollection/index.vue'
+          ),
         meta: { title: 'Create Study Set' },
       },
       {
         path: '/collection/:id',
         name: RouteName.CollectionDetails,
-        component: () => import('@/views/dynamic/studyCard/index.vue'),
+        component: () =>
+          import(
+            /* webpackChunkName: "collection-gr" */ '@/views/dynamic/studyCard/index.vue'
+          ),
         props: (route) => ({ collectionId: route.params.id as string }),
 
         meta: { title: 'Study Card' },
@@ -48,7 +58,9 @@ const routes: RouteRecordRaw[] = [
         path: '/collection/:id/update',
         name: RouteName.UpdateCollection,
         component: () =>
-          import('@/views/dynamic/createUpdateCollection/index.vue'),
+          import(
+            /* webpackChunkName: "collection-gr" */ '@/views/dynamic/createUpdateCollection/index.vue'
+          ),
         props: (route) => ({ collectionId: route.params.id as string }),
 
         meta: { title: 'Study Card' },
@@ -56,13 +68,19 @@ const routes: RouteRecordRaw[] = [
       {
         path: '/user/:userId',
         name: RouteName.UserIdProfile,
-        component: () => import('@/views/dynamic/studyCard/index.vue'),
+        component: () =>
+          import(
+            /* webpackChunkName: "user-gr" */ '@/views/dynamic/studyCard/index.vue'
+          ),
         meta: { title: 'Hellooo' },
       },
       {
         path: '/my-profile',
         name: RouteName.MyProfile,
-        component: () => import('@/views/dynamic/myProfile/index.vue'),
+        component: () =>
+          import(
+            /* webpackChunkName: "user-gr" */ '@/views/dynamic/myProfile/index.vue'
+          ),
         meta: { title: 'Hellooo' },
       },
       {
@@ -76,14 +94,20 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/collection/:id/test',
     name: RouteName.TestSession,
-    component: () => import('@/views/dynamic/testSession/index.vue'),
+    component: () =>
+      import(
+        /* webpackChunkName: "test-session" */ '@/views/dynamic/testSession/index.vue'
+      ),
     props: (route) => ({ collectionId: route.params.id }),
     meta: { title: 'Hellooo' },
   },
   {
     path: '/collection/:id/study',
     name: RouteName.StudySession,
-    component: () => import('@/views/dynamic/studySession/index.vue'),
+    component: () =>
+      import(
+        /* webpackChunkName: "study-session" */ '@/views/dynamic/studySession/index.vue'
+      ),
     props: (route) => ({ collectionId: route.params.id }),
     meta: { title: 'Hellooo' },
   },
@@ -101,7 +125,12 @@ export const router: Router = createRouter({
   routes,
 });
 
-router.beforeEach((to, from, next) => {
-  next();
-});
+// router.beforeEach((to, from, next) => {
+//   console.log('bebore router');
+//   next();
+// });
+// router.beforeResolve(() => {
+//   console.log('resolve router');
+//   console.log('tokekn is: ', Storage.get(ACCESS_TOKEN_KEY));
+// });
 export default router;

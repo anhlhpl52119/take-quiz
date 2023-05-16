@@ -10,7 +10,11 @@ import { getCardsOfCollection } from '@/apis/workplace';
 interface IState {
   id: string;
   isFetching: boolean;
-  cardsQuery: { items: number; page: number; query?: { set_favorite_true: boolean } };
+  cardsQuery: {
+    items: number;
+    page: number;
+    query?: { set_favorite_true: boolean };
+  };
   cardsInCollection: API.ICard[];
 }
 export const useCardsStore = defineStore('cards_store', {
@@ -30,7 +34,10 @@ export const useCardsStore = defineStore('cards_store', {
   actions: {
     async loadCardsOfCollection(collectionId: string, isLoadFavorite: boolean) {
       if (isLoadFavorite === true) {
-        this.cardsQuery = { ...this.cardsQuery, query: { set_favorite_true: true } };
+        this.cardsQuery = {
+          ...this.cardsQuery,
+          query: { set_favorite_true: true },
+        };
       }
       try {
         this.isFetching = true;
@@ -52,7 +59,10 @@ export const useCardsStore = defineStore('cards_store', {
         }
         this.cardsInCollection = resultCards;
         isLoadFavorite &&
-          message.success({ content: 'Load favorite cards success!', duration: 1.5 });
+          message.success({
+            content: 'Load favorite cards success!',
+            duration: 1.5,
+          });
         // isLoadFavorite && message.success({ content: 'Load favorite cards success!' });
       } catch (error) {
         this.cardsInCollection = [];
