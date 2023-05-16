@@ -32,7 +32,7 @@ const routes: RouteRecordRaw[] = [
       },
       {
         path: '/create-study-set',
-        name: RouteName.CreateStudySet,
+        name: RouteName.CreateCollection,
         component: () =>
           import('@/views/dynamic/createUpdateCollection/index.vue'),
         meta: { title: 'Create Study Set' },
@@ -104,17 +104,5 @@ export const router: Router = createRouter({
 
 router.beforeEach((to, from, next) => {
   next();
-  /**FIXME: currently if run an async before redirect
-   * page will delay for a second for wait API progress
-   * find out way to optimize them
-   */
-
-  // const resUserInfo = await verifyUser();
-  // if (resUserInfo) {
-  //   // console.log(resUserInfo);
-  //   next();
-  // } else {
-  //   return { name: RouteName.LoginPage };
-  // }
 });
 export default router;

@@ -20,7 +20,8 @@
           </div>
           <a-menu-divider />
           <a-menu-item :key="MenuKey.MyProfile">
-            <UserOutlined :style="iconStyle" /> <span class="menu-label">Hồ sơ</span>
+            <UserOutlined :style="iconStyle" />
+            <span class="menu-label">Hồ sơ</span>
           </a-menu-item>
           <a-menu-item :key="MenuKey.Setting">
             <SettingOutlined :style="iconStyle" />
@@ -35,7 +36,9 @@
             ><span class="menu-label">Gửi phản hồi cho chúng tôi</span>
           </a-menu-item>
           <a-menu-divider />
-          <a-menu-item :key="MenuKey.Logout" style="text-align: center; padding: 0.5em"
+          <a-menu-item
+            :key="MenuKey.Logout"
+            style="text-align: center; padding: 0.5em"
             ><span class="menu-label logout">Đăng xuất</span></a-menu-item
           >
         </a-menu>

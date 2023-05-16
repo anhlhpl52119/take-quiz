@@ -4,7 +4,7 @@ export enum RouteName {
   HomePage = 'Home',
   AboutPage = 'About',
   UserIdProfile = 'UserIdProfile',
-  CreateStudySet = 'CreateStudySet',
+  CreateCollection = 'CreateCollection',
   MyProfile = 'MyProfile',
   StudySession = 'StudySession',
   TestSession = 'TestSession',

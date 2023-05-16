@@ -58,7 +58,11 @@ const handleSubmit = async () => {
   }
   try {
     loadingState.loginButton = true;
-    message.loading({ content: () => 'Đang đăng nhập', duration: 0, key: msgKeys.login });
+    message.loading({
+      content: () => 'Đang đăng nhập',
+      duration: 0,
+      key: msgKeys.login,
+    });
     await loginReturnToken(stateRct);
     setTimeout(() => {
       router.push({ name: RouteName.AboutPage });

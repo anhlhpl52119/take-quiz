@@ -1,7 +1,9 @@
 <template>
   <div class="flex-50 header">
     <div class="logo">
-      <a href="/about"><img class="full-size-logo" src="@/assets/logo_ngang.svg" /></a>
+      <a href="/about"
+        ><img class="full-size-logo" src="@/assets/logo_ngang.svg"
+      /></a>
       <img class="mini-size-logo" src="@/assets/logo_doc.svg" />
     </div>
     <div>
@@ -11,12 +13,14 @@
             <template #icon>
               <PlusOutlined :style="{ fontSize: '18px' }"></PlusOutlined>
             </template>
-            Create Study Set</a-button
+            Create collection</a-button
           >
         </li>
         <li class="nav-lang">
           <a-select ref="select" v-model:value="valSelect" style="width: 5em">
-            <template #suffixIcon><TranslationOutlined class="ant-select-suffix" /></template>
+            <template #suffixIcon
+              ><TranslationOutlined class="ant-select-suffix"
+            /></template>
             <a-select-option value="vietnam">Vi</a-select-option>
             <a-select-option value="english">Eng</a-select-option>
           </a-select>
@@ -38,14 +42,14 @@ const router = useRouter();
 const route = useRoute();
 const isDisplay = computed(() => {
   const a = route.name;
-  if (a === RouteName.CreateStudySet || a === RouteName.UpdateCollection) {
+  if (a === RouteName.CreateCollection || a === RouteName.UpdateCollection) {
     return false;
   } else {
     return true;
   }
 });
 function onClickCreateSet() {
-  router.push({ name: RouteName.CreateStudySet });
+  router.push({ name: RouteName.CreateCollection });
 }
 </script>
 <style scoped lang="less">

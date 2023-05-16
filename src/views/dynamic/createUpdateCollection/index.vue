@@ -111,7 +111,7 @@ interface ICardsInCollection {
 /** Hooks */
 onMounted(async () => {
   switch (route.name) {
-    case RouteName.CreateStudySet:
+    case RouteName.CreateCollection:
       onAddNewCard(); //init 1 card when create new Collection
       collectionInfo.value = collectionRes.value;
       break;
