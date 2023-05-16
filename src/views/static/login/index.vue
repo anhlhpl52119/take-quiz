@@ -1,7 +1,9 @@
 <template>
   <div class="bs_cont flex-50">
     <section class="casourel w-50"><Casourel></Casourel></section>
-    <section class="login_form w-50"><LoginForm class="login_form_pos"></LoginForm></section>
+    <section class="login_form w-50">
+      <LoginForm class="login_form_pos"></LoginForm>
+    </section>
   </div>
 </template>
 <script lang="ts" setup>

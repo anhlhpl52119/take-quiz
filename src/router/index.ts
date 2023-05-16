@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router';
 import { RouteName } from '@enum/routesEnum';
 import type { RouteRecordRaw, Router, RouterHistory } from 'vue-router';
 import Layoutt from '@/layout/index.vue';
-// import { verifyUser } from '@/apis/auth';
 
 const routes: RouteRecordRaw[] = [
   {
