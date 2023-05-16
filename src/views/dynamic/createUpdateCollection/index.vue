@@ -203,7 +203,8 @@ function onDelete(deleteId: string) {
 
 // async function onCreateNewCollection() {
 //   await createNewCollectionAndCards(collectionInfo, submitionCards.value);
-// }
+
+// update collection of
 
 function onFinishValidateForm() {
   console.log('ok');
