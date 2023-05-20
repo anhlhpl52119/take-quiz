@@ -46,10 +46,13 @@ export function useWorkplaceApi() {
       isLoading.value = true;
       const resultCards: API.ICard[] = [];
 
-      const { cards, total_page, current_page } = await getCardsOfCollection(collectionId, {
-        items: 50,
-        page: 1,
-      });
+      const { cards, total_page, current_page } = await getCardsOfCollection(
+        collectionId,
+        {
+          items: 50,
+          page: 1,
+        }
+      );
       resultCards.push(...cards);
       if (current_page < total_page) {
         for (let nextPage = 2; nextPage <= total_page; nextPage++) {
@@ -86,7 +89,10 @@ export function useWorkplaceApi() {
     try {
       isLoading.value = true;
       const collection = await createCollection(creationData);
-      await createCardInCollection({ card_collection_id: collection.id, cards: cardsInfo });
+      await createCardInCollection({
+        card_collection_id: collection.id,
+        cards: cardsInfo,
+      });
       router.replace({
         name: RouteName.CollectionDetails,
         params: { id: collection.id },
@@ -103,7 +109,10 @@ export function useWorkplaceApi() {
   ) {
     try {
       isLoading.value = true;
-      await updateCardsInCollection({ card_collection_id: collectionId, cards: cardsInfo });
+      await updateCardsInCollection({
+        card_collection_id: collectionId,
+        cards: cardsInfo,
+      });
       //Modal Close
     } catch (error) {
       return Promise.reject(error);
@@ -111,7 +120,10 @@ export function useWorkplaceApi() {
       isLoading.value = false;
     }
   }
-  async function onUpdateCollection(collectionId: string, cardsInfo: API.ICollectionCreateData) {
+  async function onUpdateCollection(
+    collectionId: string,
+    cardsInfo: API.ICollectionCreateData
+  ) {
     try {
       isLoading.value = true;
       await updateCollection(collectionId, cardsInfo);
@@ -158,7 +170,10 @@ export function useWorkplaceApi() {
         await Promise.all([
           await onUpdateCollection(collectionId, updateCollection),
           await onUpdateCardsInCollection(collectionId, updateCardInCollection),
-          await createCardInCollection({ card_collection_id: collectionId, cards: createNewCard }),
+          await createCardInCollection({
+            card_collection_id: collectionId,
+            cards: createNewCard,
+          }),
         ]);
       } else {
         await Promise.all([

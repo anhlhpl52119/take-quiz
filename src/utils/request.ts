@@ -48,7 +48,9 @@ service.interceptors.response.use(
       //FIXME: when excuting an API "AUTH verryfy" will throuth an sync message with overlayed before success message
       message.error(res.messages[0] || UNKNOWN_ERROR);
       //TODO: "unauthenthicated status 401" through common message
-      const error = new Error(res.messages[0] || UNKNOWN_ERROR) as Error & { code: any };
+      const error = new Error(res.messages[0] || UNKNOWN_ERROR) as Error & {
+        code: any;
+      };
       error.code = res.code;
       return Promise.reject(error); //=> pass to Error hooks.
     } else {
@@ -72,7 +74,12 @@ export const request = async <T>(
   config: AxiosRequestConfig,
   options: RequestOptions = {}
 ): Promise<T> => {
-  const { isAuth = false, isGetDataDirectly = true, successMsg, errorMsg } = options;
+  const {
+    isAuth = false,
+    isGetDataDirectly = true,
+    successMsg,
+    errorMsg,
+  } = options;
   try {
     const targetURL = isAuth ? authApiUrl : baseApiUrl;
     config.url = uniqueSlash(`${targetURL + config.url}`);

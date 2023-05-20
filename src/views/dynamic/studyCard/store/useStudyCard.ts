@@ -1,4 +1,8 @@
-import { getStudySessions, getTestSessions, setCardIsFavorite } from '@/apis/workplace';
+import {
+  getStudySessions,
+  getTestSessions,
+  setCardIsFavorite,
+} from '@/apis/workplace';
 
 export function useStudyCard() {
   const route = useRoute();

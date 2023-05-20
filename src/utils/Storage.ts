@@ -6,7 +6,10 @@ const DEFAULT_CACHE_TIME = 60 * 60 * 24 * 7;
  * @param {string=} prefixKey -
  * @param {Object} [storage=localStorage] - sessionStorage | localStorage
  */
-export const createStorage = ({ prefixKey = '', storage = localStorage } = {}) => {
+export const createStorage = ({
+  prefixKey = '',
+  storage = localStorage,
+} = {}) => {
   /**
    * Local cache class
    * @class Storage
@@ -80,7 +83,11 @@ export const createStorage = ({ prefixKey = '', storage = localStorage } = {}) =
      * If the expiration time is set, the browser automatically deletes by default
      * @example
      */
-    setCookie(name: string, value: any, expire: number | null = DEFAULT_CACHE_TIME) {
+    setCookie(
+      name: string,
+      value: any,
+      expire: number | null = DEFAULT_CACHE_TIME
+    ) {
       document.cookie = `${this.getKey(name)}=${value}; Max-Age=${expire}`;
     }
 

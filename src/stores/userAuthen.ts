@@ -23,7 +23,8 @@ export const useUserAuth = defineStore({
     },
     getUserName(state): string {
       return (
-        state.userInfo?.username!.charAt(0).toUpperCase()! + state.userInfo?.username!.slice(1)!
+        state.userInfo?.username!.charAt(0).toUpperCase()! +
+        state.userInfo?.username!.slice(1)!
       );
     },
     getUserEmail(state): string {
