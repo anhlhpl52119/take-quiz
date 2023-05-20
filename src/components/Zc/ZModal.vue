@@ -1,6 +1,11 @@
 <template>
   <div>
-    <a-modal :visible="isVisible" width="500px" title="Basic Modal" @ok="handleOk">
+    <a-modal
+      :visible="isVisible"
+      width="500px"
+      title="Basic Modal"
+      @ok="handleOk"
+    >
       <p>Some contents...</p>
       <p>Some contents...</p>
       <p>Some contents...</p>

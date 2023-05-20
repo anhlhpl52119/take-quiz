@@ -13,7 +13,9 @@
         </a-tag>
       </template>
       <div class="btn-card">
-        <a-button danger @click.prevent="onDelete" :loading="onDirectLoading">Delete</a-button>
+        <a-button danger @click.prevent="onDelete" :loading="onDirectLoading"
+          >Delete</a-button
+        >
         <a-button @click="onUpdateCollection(id)">Edit</a-button>
         <a-button @click="onClick" :loading="onDirectLoading">Learn</a-button>
       </div>
@@ -22,7 +24,11 @@
 </template>
 <script lang="tsx" setup>
 import { createVNode } from 'vue';
-import { ExclamationCircleOutlined, TwitterOutlined, YoutubeOutlined } from '@ant-design/icons-vue';
+import {
+  ExclamationCircleOutlined,
+  TwitterOutlined,
+  YoutubeOutlined,
+} from '@ant-design/icons-vue';
 import { Modal, message } from 'ant-design-vue';
 import { RouteName } from '@/enums/routesEnum';
 import { ECollectionStatus, deleteCollection } from '@/apis/workplace';
@@ -40,7 +46,10 @@ const tagCal = computed(() => {
   }
 });
 function onUpdateCollection(collectionId: string) {
-  router.push({ name: RouteName.UpdateCollection, params: { id: collectionId } });
+  router.push({
+    name: RouteName.UpdateCollection,
+    params: { id: collectionId },
+  });
 }
 async function onDelete() {
   Modal.confirm({

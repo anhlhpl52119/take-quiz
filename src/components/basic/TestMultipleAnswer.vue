@@ -1,5 +1,8 @@
 <template>
-  <div class="box-shadow box-wrapper" :style="{ backgroundColor: isAnseredColor }">
+  <div
+    class="box-shadow box-wrapper"
+    :style="{ backgroundColor: isAnseredColor }"
+  >
     <div class="flex-content">
       <div class="flex-item horizon-divider">
         <h5 class="label-item">Term</h5>
@@ -7,7 +10,11 @@
       </div>
     </div>
     <div class="answer-box">
-      <a-radio-group v-model:value="userAnswer" button-style="solid" @change="onUserAnsChange">
+      <a-radio-group
+        v-model:value="userAnswer"
+        button-style="solid"
+        @change="onUserAnsChange"
+      >
         <a-radio :style="radioStyle" :value="answerOption[0]"
           ><span style="font-size: 20px">{{ answerOption[0] }}</span>
         </a-radio>
@@ -44,7 +51,10 @@ const isAnseredColor = computed(() => {
 });
 function onUserAnsChange() {
   const testCardId = data.value.id;
-  userAnswered.set(data.value.id, { test_card_id: testCardId, user_answers: [userAnswer.value] });
+  userAnswered.set(data.value.id, {
+    test_card_id: testCardId,
+    user_answers: [userAnswer.value],
+  });
 }
 const userAnswer = ref();
 const cardQuestion = computed<string>(() => {

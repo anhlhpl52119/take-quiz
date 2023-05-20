@@ -1,6 +1,7 @@
 <template>
   <a-card hoverable>
-    <span style="position: absolute; bottom: 5px; color: darkgrey; font-size: 11px"
+    <span
+      style="position: absolute; bottom: 5px; color: darkgrey; font-size: 11px"
       ><i>Lastest: {{ dayjs(created_at).format('DD/MM/YYYY') }}</i></span
     >
     <template #cover>
@@ -13,7 +14,14 @@
       </template>
     </a-card-meta>
     <br />
-    <div style="display: flex; gap: 0 0.5em; justify-content: space-between; align-items: center">
+    <div
+      style="
+        display: flex;
+        gap: 0 0.5em;
+        justify-content: space-between;
+        align-items: center;
+      "
+    >
       <a-dropdown :trigger="['click']" placement="top">
         <div class="icon-wrap">
           <SettingOutlined style="font-size: 1.5em" />
@@ -28,14 +36,21 @@
             <a-menu-divider />
 
             <a-menu-item key="delete">
-              <a-button danger @click.prevent="onDelete" :loading="onDirectLoading" block
-                >Delete <template #icon><DeleteOutlined></DeleteOutlined></template
+              <a-button
+                danger
+                @click.prevent="onDelete"
+                :loading="onDirectLoading"
+                block
+                >Delete
+                <template #icon><DeleteOutlined></DeleteOutlined></template
               ></a-button>
             </a-menu-item>
           </a-menu>
         </template>
       </a-dropdown>
-      <a-button size="large" @click="onLearn" :loading="onDirectLoading">Learn</a-button>
+      <a-button size="large" @click="onLearn" :loading="onDirectLoading"
+        >Learn</a-button
+      >
     </div>
   </a-card>
 </template>
@@ -70,7 +85,10 @@ const imgRandomUrl = computed<string>(() => {
   return imgURLs[Math.floor(Math.random() * imgURLs.length)];
 });
 function onUpdateCollection(collectionId: string) {
-  router.push({ name: RouteName.UpdateCollection, params: { id: collectionId } });
+  router.push({
+    name: RouteName.UpdateCollection,
+    params: { id: collectionId },
+  });
 }
 async function onDelete() {
   Modal.confirm({

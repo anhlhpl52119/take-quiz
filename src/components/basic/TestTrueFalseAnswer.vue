@@ -1,5 +1,8 @@
 <template>
-  <div class="box-shadow box-wrapper" :style="{ backgroundColor: isAnseredColor }">
+  <div
+    class="box-shadow box-wrapper"
+    :style="{ backgroundColor: isAnseredColor }"
+  >
     <div class="flex-content">
       <div class="flex-item horizon-divider">
         <h5 class="label-item">Term</h5>
@@ -11,9 +14,17 @@
       </div>
     </div>
     <div class="answer-box">
-      <a-radio-group v-model:value="userAnswer" button-style="solid" @change="onUserAnsChange">
-        <a-radio :style="radioStyle" :value="1"><span style="font-size: 20px">True</span> </a-radio>
-        <a-radio :style="radioStyle" :value="0"><span style="font-size: 20px">False</span></a-radio>
+      <a-radio-group
+        v-model:value="userAnswer"
+        button-style="solid"
+        @change="onUserAnsChange"
+      >
+        <a-radio :style="radioStyle" :value="1"
+          ><span style="font-size: 20px">True</span>
+        </a-radio>
+        <a-radio :style="radioStyle" :value="0"
+          ><span style="font-size: 20px">False</span></a-radio
+        >
       </a-radio-group>
     </div>
   </div>
@@ -43,7 +54,10 @@ const userAnswer = ref();
 function onUserAnsChange() {
   const convertedValue = userAnswer.value === 0 ? false : true;
   const testCardId = data.value.id;
-  userAnswered.set(data.value.id, { test_card_id: testCardId, user_answers: [convertedValue] });
+  userAnswered.set(data.value.id, {
+    test_card_id: testCardId,
+    user_answers: [convertedValue],
+  });
 }
 const questionExtraction = computed<Question>(() => {
   const questionTupple = data.value.questions.question.split(' => ');

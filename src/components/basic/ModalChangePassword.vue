@@ -1,6 +1,11 @@
 <template>
   <div>
-    <a-modal :visible="isVisible" width="700px" title="ChangePassword" :footer="null">
+    <a-modal
+      :visible="isVisible"
+      width="700px"
+      title="ChangePassword"
+      :footer="null"
+    >
       <a-form
         ref="formRef"
         name="custom-validation"
@@ -10,20 +15,34 @@
         @finish="handleFinish"
       >
         <a-form-item has-feedback label="Password" name="pass">
-          <a-input v-model:value="formState.pass" type="password" autocomplete="off" />
+          <a-input
+            v-model:value="formState.pass"
+            type="password"
+            autocomplete="off"
+          />
         </a-form-item>
         <a-form-item has-feedback label="Password" name="pass">
-          <a-input v-model:value="formState.pass" type="password" autocomplete="off" />
+          <a-input
+            v-model:value="formState.pass"
+            type="password"
+            autocomplete="off"
+          />
         </a-form-item>
         <a-form-item has-feedback label="Confirm" name="checkPass">
-          <a-input v-model:value="formState.checkPass" type="password" autocomplete="off" />
+          <a-input
+            v-model:value="formState.checkPass"
+            type="password"
+            autocomplete="off"
+          />
         </a-form-item>
         <a-form-item has-feedback label="Age" name="age">
           <a-input-number v-model:value="formState.age" />
         </a-form-item>
         <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
           <a-button type="primary" html-type="submit">Submit</a-button>
-          <a-button style="margin-left: 10px" @click="resetForm">Reset</a-button>
+          <a-button style="margin-left: 10px" @click="resetForm"
+            >Reset</a-button
+          >
         </a-form-item>
       </a-form>
     </a-modal>
