@@ -30,8 +30,12 @@
 import TestSessionHeader from './TestSessionHeader.vue';
 // import QuestionContent from './QuestionContent.vue';
 import { useStudyStore } from './store/useStudyStore';
-const ModalConfig = defineAsyncComponent(() => import('./ModalCreateTestSession.vue'));
-const QuestionContent = defineAsyncComponent(() => import('./QuestionContent.vue'));
+const ModalConfig = defineAsyncComponent(
+  () => import('./ModalCreateTestSession.vue')
+);
+const QuestionContent = defineAsyncComponent(
+  () => import('./QuestionContent.vue')
+);
 
 const studyStore = useStudyStore();
 const { studyCards } = toRefs(studyStore);

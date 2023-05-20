@@ -54,7 +54,9 @@ export const useStudyStore = defineStore('study_session', {
     async setupStudy() {
       try {
         this.isFetching = true;
-        const { study_cards, study_session } = await gennerateStudySession(this.studysetupConfig);
+        const { study_cards, study_session } = await gennerateStudySession(
+          this.studysetupConfig
+        );
         this.studyCards = study_cards;
         this.studySession = study_session;
       } catch (error) {
@@ -66,7 +68,11 @@ export const useStudyStore = defineStore('study_session', {
     async submitCardStudy(cardId: string, userAnswer: string) {
       try {
         this.isFetching = true;
-        const { study_card } = await takeStudySessionResult(this.getSessionId, cardId, userAnswer);
+        const { study_card } = await takeStudySessionResult(
+          this.getSessionId,
+          cardId,
+          userAnswer
+        );
         this.cardResult = study_card;
       } catch (error) {
         return Promise.reject(error);

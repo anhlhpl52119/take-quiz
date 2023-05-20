@@ -18,7 +18,12 @@
           </template>
         </div>
         <template v-else>
-          <template v-if="testSessionStore.getQuestionType === ESessionQuestionType.TrueFalseType">
+          <template
+            v-if="
+              testSessionStore.getQuestionType ===
+              ESessionQuestionType.TrueFalseType
+            "
+          >
             <div v-for="card in testCards" :key="card.id">
               <TestTrueFalseQuestion
                 :data="card"
@@ -26,7 +31,12 @@
               ></TestTrueFalseQuestion>
             </div>
           </template>
-          <template v-if="testSessionStore.getQuestionType === ESessionQuestionType.FourAnswer">
+          <template
+            v-if="
+              testSessionStore.getQuestionType ===
+              ESessionQuestionType.FourAnswer
+            "
+          >
             <div v-for="card in testCards" :key="card.id">
               <TestMultipleAnswer
                 :data="card"
@@ -37,7 +47,10 @@
         </template>
       </section>
     </div>
-    <footer v-if="!testSessionStore.visibleResult || !testCards" class="fotter-page">
+    <footer
+      v-if="!testSessionStore.visibleResult || !testCards"
+      class="fotter-page"
+    >
       <a-button
         type="primary"
         @click="testSessionStore.submitAnswers"
@@ -61,7 +74,9 @@ const testSessionStore = useTestStore();
 const testCards = computed(() => {
   return testSessionStore.testCards;
 });
-const ModalConfig = defineAsyncComponent(() => import('./ModalCreateTestSession.vue'));
+const ModalConfig = defineAsyncComponent(
+  () => import('./ModalCreateTestSession.vue')
+);
 const Result = defineAsyncComponent(() => import('./Result.vue'));
 const configModal = ref(true);
 </script>

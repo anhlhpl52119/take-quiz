@@ -4,7 +4,12 @@
     <div>
       <div v-if="!testStore.visibleResult">
         <span v-if="isPrepare"><h2>Time remain</h2></span>
-        <a-statistic-countdown v-else :value="deadline" :format="format" @finish="submitAnswers">
+        <a-statistic-countdown
+          v-else
+          :value="deadline"
+          :format="format"
+          @finish="submitAnswers"
+        >
         </a-statistic-countdown>
       </div>
     </div>

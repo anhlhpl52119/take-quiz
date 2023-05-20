@@ -15,7 +15,9 @@
         <div class="content-item">
           <label
             >Test Time
-            <span style="color: darkgray; font-size: 10px">(10 mins ~ 90 mins)</span></label
+            <span style="color: darkgray; font-size: 10px"
+              >(10 mins ~ 90 mins)</span
+            ></label
           >
           <!-- TODO: add icon for input -->
           <a-input-number
@@ -76,11 +78,17 @@
         </div>
         <div class="content-item">
           <label>Question Type</label>
-          <a-select ref="select" v-model:value="configStore.question_type" style="width: 120px">
+          <a-select
+            ref="select"
+            v-model:value="configStore.question_type"
+            style="width: 120px"
+          >
             <a-select-option :value="ESessionQuestionType.TrueFalseType"
               >True False</a-select-option
             >
-            <a-select-option :value="ESessionQuestionType.FourAnswer">Multiple</a-select-option>
+            <a-select-option :value="ESessionQuestionType.FourAnswer"
+              >Multiple</a-select-option
+            >
             <!-- TODO: value = undefine mean both Multiple and TrueFalse -->
             <a-select-option :value="11" disabled>Both</a-select-option>
           </a-select>

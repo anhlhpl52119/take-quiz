@@ -13,7 +13,11 @@
         <div>Select the correct:</div>
       </section>
       <section class="answer-option">
-        <a-radio-group v-model:value="userAnswer" @change="onUserAnsChange" style="width: 100%">
+        <a-radio-group
+          v-model:value="userAnswer"
+          @change="onUserAnsChange"
+          style="width: 100%"
+        >
           <a-row :gutter="[16, 16]">
             <a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
               <a-radio :style="radioStyle" :value="answerOption[0]"
@@ -22,17 +26,23 @@
             </a-col>
             <a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
               <a-radio :style="radioStyle" :value="answerOption[1]"
-                ><span style="font-size: 20px">{{ answerOption[1] }}</span></a-radio
+                ><span style="font-size: 20px">{{
+                  answerOption[1]
+                }}</span></a-radio
               >
             </a-col>
             <a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
               <a-radio :style="radioStyle" :value="answerOption[2]"
-                ><span style="font-size: 20px">{{ answerOption[2] }}</span></a-radio
+                ><span style="font-size: 20px">{{
+                  answerOption[2]
+                }}</span></a-radio
               >
             </a-col>
             <a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
               <a-radio :style="radioStyle" :value="answerOption[3]"
-                ><span style="font-size: 20px">{{ answerOption[3] }}</span></a-radio
+                ><span style="font-size: 20px">{{
+                  answerOption[3]
+                }}</span></a-radio
               >
             </a-col>
           </a-row>

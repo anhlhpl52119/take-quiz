@@ -36,11 +36,17 @@
         </div>
         <div class="content-item">
           <label>Question Type</label>
-          <a-select ref="select" v-model:value="setupConfig.question_type" style="width: 120px">
+          <a-select
+            ref="select"
+            v-model:value="setupConfig.question_type"
+            style="width: 120px"
+          >
             <a-select-option :value="ESessionQuestionType.TrueFalseType"
               >True False</a-select-option
             >
-            <a-select-option :value="ESessionQuestionType.FourAnswer">Multiple</a-select-option>
+            <a-select-option :value="ESessionQuestionType.FourAnswer"
+              >Multiple</a-select-option
+            >
           </a-select>
         </div>
       </div>
@@ -64,7 +70,8 @@ const emits = defineEmits(['update:display']);
 
 //Data
 const router = useRouter();
-const setupConfig: API.IStudySetupParams['configs'] = studyStore.studysetupConfig.configs;
+const setupConfig: API.IStudySetupParams['configs'] =
+  studyStore.studysetupConfig.configs;
 
 function onCancel() {
   router.go(-1);

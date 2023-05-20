@@ -41,7 +41,9 @@ export const useTestStore = defineStore('testSessionStore', () => {
   async function loadTestSession() {
     try {
       isFetching.value = true;
-      const { test_cards, test_session } = await gennerateTestSession(configModal);
+      const { test_cards, test_session } = await gennerateTestSession(
+        configModal
+      );
       testCards.value = test_cards;
       sessionInfo.value = test_session;
     } catch (error) {
@@ -54,7 +56,10 @@ export const useTestStore = defineStore('testSessionStore', () => {
   async function submitAnswers() {
     try {
       isFetching.value = true;
-      const { results } = await submitTestSession(sessionInfo.value?.id!, getUserAns.value);
+      const { results } = await submitTestSession(
+        sessionInfo.value?.id!,
+        getUserAns.value
+      );
       testResult.value = results;
       visibleResult.value = true;
       resetCards();

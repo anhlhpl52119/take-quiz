@@ -4,7 +4,12 @@
       <div>Submit test sucess!</div>
     </template>
     <template #extra>
-      <a-progress type="circle" :percent="percentCorrect" :width="80" :stroke-color="colored" />
+      <a-progress
+        type="circle"
+        :percent="percentCorrect"
+        :width="80"
+        :stroke-color="colored"
+      />
       <br />
       <div style="margin-top: 1em">
         <div>
@@ -14,7 +19,8 @@
           Total answers: <span>{{ testResult.total_answer }}</span>
         </div>
         <div>
-          Total correct answers: <span>{{ testResult.total_success_answer }}</span>
+          Total correct answers:
+          <span>{{ testResult.total_success_answer }}</span>
         </div>
       </div>
     </template>
@@ -24,7 +30,9 @@
 import { useTestStore } from './store/useTestStore';
 const testResult = useTestStore().testResult!;
 const percentCorrect = computed(() => {
-  return Math.round((testResult.total_success_answer / testResult.total_question) * 100);
+  return Math.round(
+    (testResult.total_success_answer / testResult.total_question) * 100
+  );
 });
 const colored = computed(() => {
   if (percentCorrect.value <= 20) {
