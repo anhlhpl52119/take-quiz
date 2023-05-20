@@ -64,7 +64,10 @@
       </div>
       <div class="f-tool-bar right-toolbar">
         <div class="icon-wrap">
-          <SettingOutlined @click="onOpenOptionModal" style="font-size: 1.5em" />
+          <SettingOutlined
+            @click="onOpenOptionModal"
+            style="font-size: 1.5em"
+          />
         </div>
       </div>
     </div>
@@ -88,12 +91,18 @@
       ></StudyHistoryModal>
     </template>
     <template>
-      <CardOptionModal v-model:is-visible="visibleState.optionModal"></CardOptionModal>
+      <CardOptionModal
+        v-model:is-visible="visibleState.optionModal"
+      ></CardOptionModal>
     </template>
   </div>
 </template>
 <script lang="ts" setup>
-import { ArrowRightOutlined, ArrowLeftOutlined, SettingOutlined } from '@ant-design/icons-vue';
+import {
+  ArrowRightOutlined,
+  ArrowLeftOutlined,
+  SettingOutlined,
+} from '@ant-design/icons-vue';
 import FlipCard from './FlipCard.vue';
 import { IChangeType, type CardForTemplate } from './types';
 import { useStudyCard } from './store/useStudyCard';
@@ -101,9 +110,15 @@ import { useCardsStore } from './store/useCardsStore';
 import { useWorkplaceApi } from '@/composable/mock/useWorkplaceApi';
 import { RouteName } from '@/enums/routesEnum';
 
-const TestHistoryModal = defineAsyncComponent(() => import('./ModalTestHistory.vue'));
-const StudyHistoryModal = defineAsyncComponent(() => import('./ModalStudyHistory.vue'));
-const CardOptionModal = defineAsyncComponent(() => import('./ModalCardOptions.vue'));
+const TestHistoryModal = defineAsyncComponent(
+  () => import('./ModalTestHistory.vue')
+);
+const StudyHistoryModal = defineAsyncComponent(
+  () => import('./ModalStudyHistory.vue')
+);
+const CardOptionModal = defineAsyncComponent(
+  () => import('./ModalCardOptions.vue')
+);
 const {
   // loadCardsOfCollection,
   loadCollectionById,
@@ -157,10 +172,16 @@ async function onOpenHistory(val: any) {
 }
 function onTest() {
   visibleState.testModal = true;
-  router.push({ name: RouteName.TestSession, params: { id: currentCollection.value?.id } });
+  router.push({
+    name: RouteName.TestSession,
+    params: { id: currentCollection.value?.id },
+  });
 }
 function onStudy() {
-  router.push({ name: RouteName.StudySession, params: { id: currentCollection.value?.id } });
+  router.push({
+    name: RouteName.StudySession,
+    params: { id: currentCollection.value?.id },
+  });
 }
 function onOpenOptionModal() {
   visibleState.optionModal = true;
@@ -175,7 +196,9 @@ watch(
   }
 );
 const percentStatusBar = computed<number>(() => {
-  const result = Math.round((currentCardsIndex.value / cardsInCollection.value.length) * 100);
+  const result = Math.round(
+    (currentCardsIndex.value / cardsInCollection.value.length) * 100
+  );
   return result;
 });
 
@@ -186,14 +209,16 @@ const CardTestComputed = computed(() => {
 const onCurrentCardChange = (ChangeType: IChangeType) => {
   switch (ChangeType) {
     case IChangeType.Next:
-      currentCardsIndex.value = (currentCardsIndex.value + 1) % cardsInCollection.value.length;
+      currentCardsIndex.value =
+        (currentCardsIndex.value + 1) % cardsInCollection.value.length;
       isActiveCardFlip.value = false;
       break;
     case IChangeType.Previous:
       if (currentCardsIndex.value <= 0) {
         currentCardsIndex.value = 0;
       } else {
-        currentCardsIndex.value = (currentCardsIndex.value - 1) % cardsInCollection.value.length;
+        currentCardsIndex.value =
+          (currentCardsIndex.value - 1) % cardsInCollection.value.length;
       }
       isActiveCardFlip.value = false;
       break;

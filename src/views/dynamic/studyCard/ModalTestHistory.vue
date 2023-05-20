@@ -10,16 +10,36 @@
     >
       <div v-if="data.length === 0">No Study Histories</div>
       <div v-else class="body-modal">
-        <div v-for="item in data" :key="item.id" class="item-container box-shadow">
+        <div
+          v-for="item in data"
+          :key="item.id"
+          class="item-container box-shadow"
+        >
           <ul class="result-items">
-            <li><strong>Date: </strong> {{ dayjs(item.created_at).format('DD-MM-YYYY') }}</li>
-            <li><strong>Total questions: </strong> {{ item.results.total_question }}</li>
-            <li><strong>Total answers: </strong> {{ item.results.total_answer }}</li>
-            <li><strong>Correct answers: </strong> {{ item.results.total_success_answer }}</li>
+            <li>
+              <strong>Date: </strong>
+              {{ dayjs(item.created_at).format('DD-MM-YYYY') }}
+            </li>
+            <li>
+              <strong>Total questions: </strong>
+              {{ item.results.total_question }}
+            </li>
+            <li>
+              <strong>Total answers: </strong> {{ item.results.total_answer }}
+            </li>
+            <li>
+              <strong>Correct answers: </strong>
+              {{ item.results.total_success_answer }}
+            </li>
           </ul>
           <a-progress
             type="circle"
-            :percent="resultPercent(item.results.total_question, item.results.total_success_answer)"
+            :percent="
+              resultPercent(
+                item.results.total_question,
+                item.results.total_success_answer
+              )
+            "
             :width="70"
           />
         </div>

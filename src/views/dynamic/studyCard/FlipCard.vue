@@ -19,7 +19,10 @@
             </a-button>
           </li>
           <li>
-            <StarButton @click="onClickStar" v-model:value="cardData.set_favorite"></StarButton>
+            <StarButton
+              @click="onClickStar"
+              v-model:value="cardData.set_favorite"
+            ></StarButton>
           </li>
         </ul>
       </nav>
@@ -49,12 +52,19 @@
               </a-button>
             </li>
             <li>
-              <StarButton @click="onClickStar" v-model:value="cardData.set_favorite"></StarButton>
+              <StarButton
+                @click="onClickStar"
+                v-model:value="cardData.set_favorite"
+              ></StarButton>
             </li>
           </ul>
         </nav>
         <div class="content-holder">
-          <p class="text-content" ref="refsContent" :style="{ fontSize: '1.5em' }">
+          <p
+            class="text-content"
+            ref="refsContent"
+            :style="{ fontSize: '1.5em' }"
+          >
             {{ cardData.answer }}
           </p>
         </div>
@@ -91,7 +101,10 @@ const BASE_CARD_PARAMS = readonly({
 });
 const onClickStar = (e: Event) => {
   e.stopPropagation();
-  setCardFavorite({ id: cardData.value.id, set_favorite: cardData.value.set_favorite });
+  setCardFavorite({
+    id: cardData.value.id,
+    set_favorite: cardData.value.set_favorite,
+  });
 };
 const onEditCard = (e: Event) => {
   e.stopPropagation();

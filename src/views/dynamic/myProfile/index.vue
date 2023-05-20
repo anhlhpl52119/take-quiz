@@ -7,7 +7,9 @@
         </a-avatar>
         <ul>
           <li class="info"><span>hunganh@gmail.com</span></li>
-          <li class="info"><span style="color: rgb(167 165 165)">Lam Hung Anh</span></li>
+          <li class="info">
+            <span style="color: rgb(167 165 165)">Lam Hung Anh</span>
+          </li>
         </ul>
       </div>
       <div class="user-info-flex btn-gap">
@@ -16,7 +18,8 @@
           <template #icon> <EditOutlined></EditOutlined> </template
         ></a-button>
         <a-button @click="onClickChangePass"
-          >Change Password <template #icon> <KeyOutlined></KeyOutlined> </template
+          >Change Password
+          <template #icon> <KeyOutlined></KeyOutlined> </template
         ></a-button>
       </div>
     </div>
@@ -24,7 +27,9 @@
       <TabOption></TabOption>
     </div>
     <template>
-      <ModalChangePassword v-model:is-visible="modalvisible.changePass"></ModalChangePassword>
+      <ModalChangePassword
+        v-model:is-visible="modalvisible.changePass"
+      ></ModalChangePassword>
     </template>
   </div>
 </template>

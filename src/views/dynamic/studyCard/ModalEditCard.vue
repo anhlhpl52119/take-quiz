@@ -1,14 +1,25 @@
 <template>
   <div>
-    <a-modal :visible="isVisible" title="Edit" @ok="handleOk" @cancel="onCancel">
+    <a-modal
+      :visible="isVisible"
+      title="Edit"
+      @ok="handleOk"
+      @cancel="onCancel"
+    >
       <div class="modal-content">
         <div class="flex-item">
           <label>Question</label>
-          <a-textarea v-model:value="modalContent.question" placeholder="Enter Term" />
+          <a-textarea
+            v-model:value="modalContent.question"
+            placeholder="Enter Term"
+          />
         </div>
         <div class="flex-item">
           <label>Answer</label>
-          <a-textarea v-model:value="modalContent.answer" placeholder="Enter Defination" />
+          <a-textarea
+            v-model:value="modalContent.answer"
+            placeholder="Enter Defination"
+          />
         </div>
       </div>
     </a-modal>

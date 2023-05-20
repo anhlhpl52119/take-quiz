@@ -8,7 +8,10 @@
       style="top: 2em; max-width: 90%"
     >
       <div v-if="data.length === 0">No Study Histories</div>
-      <div v-else style="max-height: 500px; overflow: scroll; overflow-x: hidden">
+      <div
+        v-else
+        style="max-height: 500px; overflow: scroll; overflow-x: hidden"
+      >
         <div>{{ data }}</div>
       </div>
     </a-modal>
