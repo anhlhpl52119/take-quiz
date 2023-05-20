@@ -11,14 +11,20 @@ export function getStudySessions(queryParans: any) {
   });
 }
 
-export function gennerateStudySession(sessionSetupConfig: API.IStudySetupParams) {
+export function gennerateStudySession(
+  sessionSetupConfig: API.IStudySetupParams
+) {
   return request<API.IStudySessionCards>({
     url: STUDY_SESSION_URL,
     method: EReqMethod.POST,
     data: { study_session: sessionSetupConfig },
   });
 }
-export function takeStudySessionResult(studySessionId: string, cardId: string, userAnswer: string) {
+export function takeStudySessionResult(
+  studySessionId: string,
+  cardId: string,
+  userAnswer: string
+) {
   return request<API.IResultStudySessionCards>({
     url: `${STUDY_SESSION_URL}/${studySessionId}/study_card/${cardId}`,
     method: EReqMethod.PATCH,

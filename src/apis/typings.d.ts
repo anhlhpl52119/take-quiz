@@ -24,7 +24,10 @@ interface QueryDate {
   updated_at_gteq: string;
 }
 // type Recoed = Record
-interface ITet<T> extends PrefixedWithCont<Partial<T>>, PrefixedWithEQ<Partial<T>>, QueryDate {}
+interface ITet<T>
+  extends PrefixedWithCont<Partial<T>>,
+    PrefixedWithEQ<Partial<T>>,
+    QueryDate {}
 // type Defination = ITet<ICollection>;
 type Defination = ICollectionQueryParams;
 type PrefixedWithCont<T extends Record<string, unknown>> = {

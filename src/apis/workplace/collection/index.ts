@@ -58,7 +58,10 @@ export function createCollection(creationData: API.ICollectionCreateData) {
  * @param {collectionId queryParams} string  @param {queryParams} any
  * @callback
  */
-export function updateCollection(collectionId: string, updateData: API.ICollectionCreateData) {
+export function updateCollection(
+  collectionId: string,
+  updateData: API.ICollectionCreateData
+) {
   return request<API.ICollection>({
     url: `${COLLECTION_PREFIX_URL}/${collectionId}`,
     method: EReqMethod.PATCH,

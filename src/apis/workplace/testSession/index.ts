@@ -19,7 +19,10 @@ export function gennerateTestSession(testConfig: API.ITestSetupParams) {
   });
 }
 
-export function takeCardTestResult(testSessionId: string, testConfig: API.ISubmitTestCardAnswer) {
+export function takeCardTestResult(
+  testSessionId: string,
+  testConfig: API.ISubmitTestCardAnswer
+) {
   return request<API.ITestCardAnswerResult>({
     url: `${TEST_SESSION_URL}/${testSessionId}/test_card/${testConfig.test_card_id}`,
     method: EReqMethod.PATCH,
@@ -27,7 +30,10 @@ export function takeCardTestResult(testSessionId: string, testConfig: API.ISubmi
   });
 }
 
-export function submitTestSession(testSessionId: string, userAnswers: API.ISubmitTestCardAnswer[]) {
+export function submitTestSession(
+  testSessionId: string,
+  userAnswers: API.ISubmitTestCardAnswer[]
+) {
   return request<API.ITestSessionResults>({
     url: `${TEST_SESSION_URL}/${testSessionId}/submit_test/`,
     method: EReqMethod.PUT,
