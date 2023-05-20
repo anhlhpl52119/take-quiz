@@ -5,12 +5,16 @@ import { setupAntd, setupStore, setupDayjs } from '@/plugins';
 import '@/styles/index.less';
 
 const app = createApp(App);
-app.use(router);
 
 function setupPlugins() {
   setupAntd(app);
   setupStore(app);
   setupDayjs(app);
 }
+async function SetupRouter() {
+  app.use(router);
+  await router.isReady();
+  app.mount('#app');
+}
 setupPlugins();
-app.mount('#app');
+await SetupRouter();
