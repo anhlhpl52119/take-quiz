@@ -15,8 +15,8 @@
     </template>
     <section>
       <a-textarea
-        ref="refEvent"
-        id="textbox"
+        ref="textAreaRefs"
+        id="ta-test"
         v-model:value="inputValue"
         :placeholder="placeHolder"
         :rows="8"
@@ -28,8 +28,19 @@
 const props = defineProps<{ isVisible: boolean }>();
 const { isVisible } = toRefs(props);
 const emit = defineEmits(['update:isVisible']);
-
-const refEvent = ref<HTMLTextAreaElement | null>(null);
+onMounted(async () => {
+  const a = document.getElementById('ta-test');
+  console.log(a);
+  a?.addEventListener('keydown', (e) => {
+    if (e.key == 'Tab') {
+      e.preventDefault();
+      // inputValue.value = inputValue.value + '\t';
+      inputValue.value = inputValue.value.substring(0);
+    }
+  });
+});
+onUnmounted(() => {});
+const textAreaRefs = ref<HTMLTextAreaElement | null>();
 const symbolTab = '\t';
 const SymbolNewLine = '\n';
 const placeHolder = `Word 1${symbolTab}Defination 1${SymbolNewLine}Word 2${symbolTab}Defination 2${SymbolNewLine}Word 3${symbolTab}Defination 3${SymbolNewLine}`;
@@ -39,3 +50,10 @@ const onClose = () => {
   emit('update:isVisible', false);
 };
 </script>
+<style>
+#ta-test {
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+}
+</style>

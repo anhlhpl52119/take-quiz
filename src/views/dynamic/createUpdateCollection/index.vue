@@ -21,7 +21,7 @@
           <a-button
             @click="visibleState.ImportDrawer = true"
             size="large"
-            :disabled="true"
+            :disabled="false"
           >
             <template #icon>
               <PlusOutlined></PlusOutlined>
@@ -83,6 +83,7 @@
     <div ref="refsContent" style="margin-top: 10px; height: 20px"></div>
     <template>
       <ImportDrawer
+        v-if="visibleState.ImportDrawer"
         v-model:is-visible="visibleState.ImportDrawer"
       ></ImportDrawer>
     </template>
@@ -93,6 +94,7 @@ import { PlusOutlined, SettingOutlined } from '@ant-design/icons-vue';
 import { v4 as uuidv4 } from 'uuid';
 import MaterialCardContent from './MaterialCardContent.vue';
 import { useCreUpdCollection } from './hooks/useCreUpdCollection';
+// import ImportDrawer from './ImportDrawer.vue';
 import { RouteName } from '@/enums/routesEnum';
 const ImportDrawer = defineAsyncComponent(() => import('./ImportDrawer.vue'));
 
