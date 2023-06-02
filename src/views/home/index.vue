@@ -21,7 +21,6 @@
 </template>
 <script lang="ts" setup>
 import { useWorkplaceApi } from '@/composable/mock/useWorkplaceApi';
-// import CardStudySet from '@/components/basic/CardStudySet.vue';
 import CardStudySetPiC from '@/components/basic/CardStudySetWithPic.vue';
 import { ECollectionStatus } from '@/apis/workplace';
 
