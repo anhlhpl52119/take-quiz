@@ -122,12 +122,4 @@ export const router: Router = createRouter({
   routes,
 });
 
-// router.beforeEach((to, from, next) => {
-//   console.log('bebore router');
-//   next();
-// });
-// router.beforeResolve(() => {
-//   console.log('resolve router');
-//   console.log('tokekn is: ', Storage.get(ACCESS_TOKEN_KEY));
-// });
 export default router;
