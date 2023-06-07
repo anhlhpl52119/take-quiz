@@ -30,9 +30,6 @@ const routes: RouteRecordRaw[] = [
         name: RouteName.AboutPage,
         component: () => import('@/views/home/index.vue'),
         meta: { title: 'About' },
-        beforeEnter: () => {
-          console.log('token before', Storage.get(ACCESS_TOKEN_KEY));
-        },
       },
       {
         path: '/create-collection',
