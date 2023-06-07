@@ -194,20 +194,6 @@ function onDelete(deleteId: string) {
   }
 }
 
-// async function onUpdateAllCollection() {
-//   await onUpdateAllCollectionDatas(
-//     collectionId?.value!,
-//     collectionInfo,
-//     submitOldCards.value,
-//     submitionNewCards.value
-//   );
-// }
-
-// async function onCreateNewCollection() {
-//   await createNewCollectionAndCards(collectionInfo, submitionCards.value);
-
-// update collection of
-
 function onFinishValidateForm() {
   console.log('ok');
 }
