@@ -2,8 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router';
 import { RouteName } from '@enum/routesEnum';
 import type { RouteRecordRaw, Router, RouterHistory } from 'vue-router';
 import Layoutt from '@/layout/index.vue';
-import Storage from '@/utils/Storage';
-import { ACCESS_TOKEN_KEY } from '@/enums/cacheEnum';
 
 const routes: RouteRecordRaw[] = [
   {
