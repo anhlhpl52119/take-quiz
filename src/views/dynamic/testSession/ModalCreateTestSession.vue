@@ -89,7 +89,6 @@
             <a-select-option :value="ESessionQuestionType.FourAnswer"
               >Multiple</a-select-option
             >
-            <!-- TODO: value = undefine mean both Multiple and TrueFalse -->
             <a-select-option :value="11" disabled>Both</a-select-option>
           </a-select>
         </div>
